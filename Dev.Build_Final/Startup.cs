@@ -56,7 +56,7 @@ namespace Dev.Build_Final
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "Brendan",
+                    name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
 

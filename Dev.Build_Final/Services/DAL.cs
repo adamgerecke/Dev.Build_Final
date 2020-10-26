@@ -18,27 +18,28 @@ namespace Dev.Build_Final.Services
 
         public DAL(IConfiguration config)
         {
-            connString = config.GetConnectionString("Brendan");
+            connString = config.GetConnectionString("default");
             conn = new SqlConnection(connString);
         }
 
-        public IEnumerable<planner> GetList()
+        public IEnumerable<party> GetList()
         {
-            return conn.GetAll<planner>().ToList();
+            return conn.GetAll<party>().ToList();
         }
 
-        public void RemoveTask(planner myTask)
+        public void RemoveTask(party myTask)
         {
             string query = $"DELETE FROM party WHERE description='{myTask.description}'";
-            conn.Query<planner>(query);
+            conn.Query<party>(query);
         }
 
-        public void AddTask(planner myTask)
+        public void AddTask(party myTask)
         {
-            conn.Insert<planner>(myTask);
+
+            conn.Insert<party>(myTask);
         }
 
-        public void CompleteTask(planner myTask)
+        public void CompleteTask(party myTask)
         {
             var procedure = "[toggle]";
             var values = new { description = myTask.description };

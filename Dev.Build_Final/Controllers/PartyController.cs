@@ -21,9 +21,19 @@ namespace Dev.Build_Final.Controllers
         [HttpGet("check")]
         public void toggle()
         {
-            planner myTask = new planner() { description = "Purchase Roast for Dinner" };          
+            party myTask = new party() { description = "Purchase Roast for Dinner" };          
                 
             DAL.CompleteTask(myTask);
         }
+
+        [HttpGet("add")]
+        public void addTask()
+        {
+            party myTask = new party() { description = "TEST DESCRIPTION", done = false };
+
+            DAL.AddTask(myTask);
+        }
+
+
     }
 }

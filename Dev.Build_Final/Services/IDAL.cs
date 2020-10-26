@@ -8,12 +8,12 @@ namespace Dev.Build_Final.Services
 {
     public interface IDAL
     {
-        IEnumerable<planner> GetList();
+        IEnumerable<party> GetList();
 
-        void RemoveTask(planner myTask);
+        void RemoveTask(party myTask);
 
-        void AddTask(planner myTask);
+        void AddTask(party myTask);
 
-        void CompleteTask(planner myTask);
+        void CompleteTask(party myTask);
     }
 }
