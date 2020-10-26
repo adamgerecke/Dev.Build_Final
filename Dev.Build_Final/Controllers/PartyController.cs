@@ -17,9 +17,11 @@ namespace Dev.Build_Final.Controllers
         public PartyController(IDAL DAL) {
             this.DAL = DAL;
         }
+
+        [HttpGet("check")]
         public void toggle()
         {
-            planner myTask = new planner() { description = "test", done = false };          
+            planner myTask = new planner() { description = "Purchase Roast for Dinner" };          
                 
             DAL.CompleteTask(myTask);
         }
