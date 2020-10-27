@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { partyService } from '../Services/party';
 import { party } from '../interfaces/Iparty';
+
 
 
 @Component({

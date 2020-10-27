@@ -1,9 +1,11 @@
 USE [master]
 GO
-/****** Object:  Database [SantasLittleHelper]    Script Date: 10/26/2020 1:44:33 PM ******/
+/****** Object:  Database [SantasLittleHelper]    Script Date: 10/27/2020 1:06:04 PM ******/
 CREATE DATABASE [SantasLittleHelper]
  CONTAINMENT = NONE
  
+ALTER DATABASE [SantasLittleHelper] SET COMPATIBILITY_LEVEL = 150
+GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
 begin
 EXEC [SantasLittleHelper].[dbo].[sp_fulltext_database] @action = 'enable'
@@ -71,10 +73,10 @@ ALTER DATABASE [SantasLittleHelper] SET QUERY_STORE = OFF
 GO
 USE [SantasLittleHelper]
 GO
-/****** Object:  User [da]    Script Date: 10/26/2020 1:44:33 PM ******/
+/****** Object:  User [da]    Script Date: 10/27/2020 1:06:05 PM ******/
 CREATE USER [da] FOR LOGIN [da] WITH DEFAULT_SCHEMA=[dbo]
 GO
-/****** Object:  Table [dbo].[decoration]    Script Date: 10/26/2020 1:44:33 PM ******/
+/****** Object:  Table [dbo].[decoration]    Script Date: 10/27/2020 1:06:05 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -84,7 +86,7 @@ CREATE TABLE [dbo].[decoration](
 	[done] [bit] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[gift]    Script Date: 10/26/2020 1:44:33 PM ******/
+/****** Object:  Table [dbo].[gift]    Script Date: 10/27/2020 1:06:05 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -95,7 +97,7 @@ CREATE TABLE [dbo].[gift](
 	[done] [bit] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[party]    Script Date: 10/26/2020 1:44:33 PM ******/
+/****** Object:  Table [dbo].[party]    Script Date: 10/27/2020 1:06:05 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -105,7 +107,7 @@ CREATE TABLE [dbo].[party](
 	[done] [bit] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[people]    Script Date: 10/26/2020 1:44:33 PM ******/
+/****** Object:  Table [dbo].[people]    Script Date: 10/27/2020 1:06:05 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -122,11 +124,37 @@ CREATE TABLE [dbo].[people](
 GO
 INSERT [dbo].[party] ([description], [done]) VALUES (N'Purchase Roast for Dinner', 1)
 GO
-INSERT [dbo].[party] ([description], [done]) VALUES (N'Cook Roast for Dinner', 0)
+INSERT [dbo].[party] ([description], [done]) VALUES (N'Cook Roast for Dinner', 1)
 GO
-INSERT [dbo].[party] ([description], [done]) VALUES (N'Get Crayons for the Kids', 1)
+INSERT [dbo].[party] ([description], [done]) VALUES (N'Get Crayons for the Kids', 0)
 GO
-INSERT [dbo].[party] ([description], [done]) VALUES (N'Get some new coloring books for the kids', 0)
+INSERT [dbo].[party] ([description], [done]) VALUES (N'Get some new coloring books for the kids', 1)
+GO
+/****** Object:  StoredProcedure [dbo].[deleteFromParty]    Script Date: 10/27/2020 1:06:05 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[deleteFromParty]
+
+@description nvarchar(200)
+
+AS
+
+DELETE FROM party WHERE description = @description;
+GO
+/****** Object:  StoredProcedure [dbo].[toggle]    Script Date: 10/27/2020 1:06:05 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[toggle]
+@description nvarchar(200)
+AS
+
+UPDATE party
+SET done = ~done
+WHERE description = @description;
 GO
 USE [master]
 GO
