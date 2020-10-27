@@ -24,12 +24,11 @@ namespace Dev.Build_Final.Controllers
             return DAL.GetPartyList();
         }
 
-        [HttpGet("check")]
-        public void toggle()
-        {
-            party myTask = new party() { description = "Purchase Roast for Dinner" };          
+        [HttpPost("check")]
+        public void toggle(party desc)
+        {       
                 
-            DAL.CompleteTask(myTask);
+            DAL.CompleteTask(desc);
         }
 
         [HttpGet("add")]

@@ -14,12 +14,19 @@ export class PartyComponent {
   constructor(private party: partyService) { }
 
   partyList: party
+  item: party
 
   ngOnInit(): void {
+
     this.party.getAllParty().subscribe(
       (data: party) =>
         this.partyList = data
     );
+  }
+
+  checkbox(item:party) {
+    this.party.toggleDone(item);
+    this.ngOnInit();
   }
 
 }
