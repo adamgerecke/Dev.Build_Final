@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Dev.Build_Final.Services
 {
-    public class DAL : IDAL
+    public class DAL :IDAL
     {
         private string connString;
         private SqlConnection conn;
@@ -21,7 +21,7 @@ namespace Dev.Build_Final.Services
             connString = config.GetConnectionString("default");
             conn = new SqlConnection(connString);
         }
-
+        #region PartyCode
         public IEnumerable<party> GetPartyList()
         {
             string query = "SELECT * FROM party";
@@ -50,6 +50,8 @@ namespace Dev.Build_Final.Services
             var values = new { description = myTask.description };
             conn.Query(procedure, values, commandType: CommandType.StoredProcedure);
         }
+        #endregion
+
 
     }
 }

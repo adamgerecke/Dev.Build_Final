@@ -31,20 +31,20 @@ namespace Dev.Build_Final.Controllers
             DAL.CompleteTask(desc);
         }
 
-        [HttpGet("add")]
-        public void addTask()
+        [HttpPost("add")]
+        public void addTask(party newEvent)
         {
-            party myTask = new party() { description = "TEST DESCRIPTION", done = false };
+            //party myTask = new party() { description = "TEST DESCRIPTION", done = false };
 
-            DAL.AddTask(myTask);
+            DAL.AddTask(newEvent);
         }
 
-        [HttpGet("remove")]
-        public void removeTask()
+        [HttpDelete("remove/{description}")]
+        public void removeTask(string description)
         {
-            party myTask = new party() { description = "TEST DESCRIPTION", done = false };
+            party removeEvent = new party() { description = description, done = false };
 
-            DAL.RemoveTask(myTask);
+            DAL.RemoveTask(removeEvent);
         }
 
 

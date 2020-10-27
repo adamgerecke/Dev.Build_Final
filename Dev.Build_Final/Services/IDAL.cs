@@ -1,4 +1,5 @@
-﻿using Dev.Build_Final.Models;
+﻿
+using Dev.Build_Final.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ namespace Dev.Build_Final.Services
 {
     public interface IDAL
     {
+        
         IEnumerable<party> GetPartyList();
 
         void RemoveTask(party myTask);

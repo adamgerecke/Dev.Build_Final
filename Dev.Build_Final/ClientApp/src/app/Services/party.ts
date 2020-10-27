@@ -27,6 +27,17 @@ export class partyService {
   
   }
 
-  
+  newPartyItem(newParty: party) {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify(newParty);
+    var newURL = this.partyUrl + '/add'
+    console.log(body)
+    return this.http.post<party>(newURL, body, { 'headers': headers }).subscribe((data) => console.log(data));
+  }
+
+  removePartyItem(removeParty: party) {
+    var newURL = this.partyUrl + `/remove/${removeParty.description}`
+    return this.http.delete<party>(newURL).subscribe((data) => console.log(data));;
+  }
 
 }
