@@ -75,6 +75,7 @@ USE [SantasLittleHelper]
 GO
 /****** Object:  User [da]    Script Date: 10/27/2020 1:06:05 PM ******/
 CREATE USER [da] FOR LOGIN [da] WITH DEFAULT_SCHEMA=[dbo]
+CREATE USER [admin] FOR LOGIN [admin] WITH DEFAULT_SCHEMA=[dbo]
 GO
 /****** Object:  Table [dbo].[decoration]    Script Date: 10/27/2020 1:06:05 PM ******/
 SET ANSI_NULLS ON
