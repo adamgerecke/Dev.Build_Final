@@ -8,7 +8,7 @@ namespace Dev.Build_Final.Services
 {
     public interface IDAL
     {
-        IEnumerable<party> GetList();
+        IEnumerable<party> GetPartyList();
 
         void RemoveTask(party myTask);
 

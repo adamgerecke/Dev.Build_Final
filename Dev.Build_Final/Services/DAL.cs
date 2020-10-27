@@ -22,15 +22,20 @@ namespace Dev.Build_Final.Services
             conn = new SqlConnection(connString);
         }
 
-        public IEnumerable<party> GetList()
+        public IEnumerable<party> GetPartyList()
         {
-            return conn.GetAll<party>().ToList();
+            string query = "SELECT * FROM party";
+            return conn.Query<party>(query);
         }
 
         public void RemoveTask(party myTask)
         {
-            string query = $"DELETE FROM party WHERE description='{myTask.description}'";
-            conn.Query<party>(query);
+            var procedure = "[deleteFromParty]";
+            var values = new { description = myTask.description };
+            conn.Query(procedure, values, commandType: CommandType.StoredProcedure);
+
+            //string query = $"DELETE FROM party WHERE description='{myTask.description}'";
+            //conn.Query<party>(query);
         }
 
         public void AddTask(party myTask)

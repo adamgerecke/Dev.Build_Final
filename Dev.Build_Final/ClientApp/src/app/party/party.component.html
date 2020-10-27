@@ -1,1 +1,12 @@
-﻿<div style="border: 1px solid red">party Component</div>
+<div style="border: 1px solid red">party Component</div>
+
+
+<ng-container *ngFor="let item of partyList, index as i">
+  <input type="checkbox" id="item{{i}}" />
+  <label for="item{{i}}">{{item.description}}</label><br/>
+  <!--<div class="content">
+    <p>{{item.answer}}</p>
+    <br />
+    <button (click)="delFavs(item.id)">Remove from List</button>
+  </div>-->
+</ng-container>

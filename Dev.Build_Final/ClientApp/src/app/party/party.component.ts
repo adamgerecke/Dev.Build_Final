@@ -1,4 +1,7 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { partyService } from '../Services/party';
+import { party } from '../interfaces/Iparty';
+
 
 @Component({
     selector: 'app-party',
@@ -8,7 +11,15 @@
 /** party component*/
 export class PartyComponent {
     /** party ctor */
-    constructor() {
+  constructor(private party: partyService) { }
 
-    }
+  partyList: party
+
+  ngOnInit(): void {
+    this.party.getAllParty().subscribe(
+      (data: party) =>
+        this.partyList = data
+    );
+  }
+
 }

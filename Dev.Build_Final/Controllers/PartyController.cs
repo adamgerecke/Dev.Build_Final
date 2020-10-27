@@ -18,6 +18,12 @@ namespace Dev.Build_Final.Controllers
             this.DAL = DAL;
         }
 
+        [HttpGet]
+        public IEnumerable<party> getParty()
+        {
+            return DAL.GetPartyList();
+        }
+
         [HttpGet("check")]
         public void toggle()
         {
@@ -32,6 +38,14 @@ namespace Dev.Build_Final.Controllers
             party myTask = new party() { description = "TEST DESCRIPTION", done = false };
 
             DAL.AddTask(myTask);
+        }
+
+        [HttpGet("remove")]
+        public void removeTask()
+        {
+            party myTask = new party() { description = "TEST DESCRIPTION", done = false };
+
+            DAL.RemoveTask(myTask);
         }
 
 
