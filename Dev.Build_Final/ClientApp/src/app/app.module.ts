@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { PartyComponent } from './party/party.component';
+import { GiftsComponent } from './gifts/gifts.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PartyComponent } from './party/party.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    PartyComponent
+    PartyComponent,
+    GiftsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -28,6 +30,7 @@ import { PartyComponent } from './party/party.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'gift', component: GiftsComponent }
     ])
   ],
   providers: [],
