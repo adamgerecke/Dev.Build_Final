@@ -10,6 +10,7 @@ namespace Dev.Build_Final.Services
     public interface IDAL
     {
         
+        ///party/////////////////////////////////////
         IEnumerable<party> GetPartyList();
 
         void RemoveTask(party myTask);
@@ -17,5 +18,22 @@ namespace Dev.Build_Final.Services
         void AddTask(party myTask);
 
         void CompleteTask(party myTask);
+
+        //////////////////////////////////////////////
+        /////////
+        ///Gifts/////////////////////////////////////
+
+        IEnumerable<people> GetPeopleList();
+        void AddPeople(people myPeople);
+        void RemovePeople(people myPeople);
+       
+        
+        void GetPersonGifts();
+        void RemoveGift(gift myGift);
+        void AddGift(gift myGift);
+        void CompleteGift(gift myGift);
+
+
+
     }
 }

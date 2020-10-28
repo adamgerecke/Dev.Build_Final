@@ -34,8 +34,6 @@ namespace Dev.Build_Final.Services
             var values = new { description = myTask.description };
             conn.Query(procedure, values, commandType: CommandType.StoredProcedure);
 
-            //string query = $"DELETE FROM party WHERE description='{myTask.description}'";
-            //conn.Query<party>(query);
         }
 
         public void AddTask(party myTask)
@@ -52,6 +50,67 @@ namespace Dev.Build_Final.Services
         }
         #endregion
 
+        #region People
 
+        public IEnumerable<people> GetPeopleList()
+        {
+            string query = "SELECT * FROM people";
+            return conn.Query<people>(query);
+        }
+
+        public void AddPeople(people myPeople)
+        {
+            conn.Insert<people>(myPeople);
+        }
+
+        public void RemovePeople(people myPeople)
+        {
+            var procedure = "[removepeople]";
+            var values = new { firstname = myPeople.firstname, lastname = myPeople.lastname };
+            conn.Query(procedure, values, commandType: CommandType.StoredProcedure);
+
+        }
+
+        #endregion
+
+        #region Gifts
+
+        public IEnumerable<gift> GetPersonGifts(int userID)
+        {
+            string query = $"SELECT * FROM gift WHERE userid = '{userID}'";
+            return conn.Query<gift>(query);
+            
+            /*
+            string query = "SELECT gift.description, gift.done ";
+            query += "FROM gift ";
+            query += "JOIN people ON people.id=gift.userid";
+            query += $"WHERE gift.userid='{userID}' ";
+            List<gift> favlist = conn.Query<QandA>(query).ToList();
+            return favlist;
+            */
+        }
+
+        public void AddGift(gift myGift)
+        {
+            conn.Insert<gift>(myGift);
+        }
+
+        public void CompleteGift(gift myGift)
+        {
+            var procedure = "[giftToggle]";
+            var values = new { description = myGift.description };
+            conn.Query(procedure, values, commandType: CommandType.StoredProcedure);
+        }
+
+        public void RemoveGift(gift myGift)
+        {
+            var procedure = "[removegift]";
+            var values = new { description = myGift.description, userid = myGift.userid};
+            conn.Query(procedure, values, commandType: CommandType.StoredProcedure);
+
+        }
+
+
+        #endregion
     }
 }
