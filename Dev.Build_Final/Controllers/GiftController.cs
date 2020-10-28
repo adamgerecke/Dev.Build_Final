@@ -48,5 +48,6 @@ namespace Dev.Build_Final.Controllers
 
             DAL.RemoveGift(destoryGift);
         }
+
     }
 }

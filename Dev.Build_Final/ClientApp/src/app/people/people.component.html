@@ -1,1 +1,10 @@
-﻿<div style="border: 1px solid red">people Component</div>
+<!--<div style="border: 1px solid red">people Component</div>-->
+
+<div *ngFor="let p of peopleList">
+  <ul>
+    <li>
+      <a routerLink="/gift">{{p.firstname}}</a>
+    </li>
+  </ul>
+</div>
+
