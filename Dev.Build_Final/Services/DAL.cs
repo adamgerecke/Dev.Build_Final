@@ -105,10 +105,12 @@ namespace Dev.Build_Final.Services
         public void RemoveGift(gift myGift)
         {
             var procedure = "[removegift]";
-            var values = new { description = myGift.description, userid = myGift.userid};
+            var values = new { description = myGift.description};
             conn.Query(procedure, values, commandType: CommandType.StoredProcedure);
 
         }
+
+        
 
 
         #endregion

@@ -21,24 +21,32 @@ namespace Dev.Build_Final.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<gift> GetGifts()
+        public IEnumerable<gift> GetGifts(int userID)
         {
-            return DAL.GetPersonGifts();
+            return DAL.GetPersonGifts(userID);
         }
 
         [HttpPost("check")]
-        public void toggle(party desc)
+        public void toggle(gift desc)
         {
 
-            DAL.CompleteTask(desc);
+            DAL.CompleteGift(desc);
         }
 
         [HttpPost("add")]
-        public void addTask(party newEvent)
+        public void AddGif(gift newGift)
         {
             //party myTask = new party() { description = "TEST DESCRIPTION", done = false };
 
-            DAL.AddTask(newEvent);
+            DAL.AddGift(newGift);
+        }
+
+        [HttpDelete("remove/{description}")]
+        public void RemoveGift(string description)
+        {
+            gift destoryGift = new gift() { description = description};
+
+            DAL.RemoveGift(destoryGift);
         }
     }
 }
