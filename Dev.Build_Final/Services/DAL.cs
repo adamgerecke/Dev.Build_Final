@@ -111,5 +111,37 @@ namespace Dev.Build_Final.Services
         }
 
         #endregion
+
+        #region Decoration
+
+        public IEnumerable<decoration> GetAllDecoration()
+        {
+            string query = $"SELECT * FROM decoration";
+            return conn.Query<decoration>(query);
+        }
+
+        public void AddDecoration(decoration newDecoration)
+        {
+            conn.Insert<decoration>(newDecoration);
+        }
+
+        public void RemoveDecoration(decoration destoryDecoration)
+        {
+            var procedure = "[deleteFromDecor]";
+            var values = new { description = destoryDecoration.description };
+            conn.Query(procedure, values, commandType: CommandType.StoredProcedure);
+
+        }
+
+        public void CompleteDecoration(decoration myDec)
+        {
+            var procedure = "[decortoggle]";
+            var values = new { description = myDec.description };
+            conn.Query(procedure, values, commandType: CommandType.StoredProcedure);
+        }
+
+
+
+        #endregion
     }
 }

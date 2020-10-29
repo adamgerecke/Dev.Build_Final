@@ -1,9 +1,6 @@
 <div style="border: 1px solid red">gifts Component</div>
 
 
-  <app-people></app-people>
-
-  <router-outlet>
     <ng-container *ngFor="let item of giftList, index as i">
       <div *ngIf="item.done =='1'; then Checked else unChecked">
 
@@ -27,5 +24,3 @@
 
       <button (click)="newItem()">Add Gift</button>
     </form>
-
-  </router-outlet>

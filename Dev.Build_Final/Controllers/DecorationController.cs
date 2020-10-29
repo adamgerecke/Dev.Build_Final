@@ -18,11 +18,11 @@ namespace Dev.Build_Final.Controllers
         {
             this.DAL = DAL;
         }
-        /*
+        
         [HttpGet]
-        public IEnumerable<decoration> getParty()
+        public IEnumerable<decoration> getDecorationList()
         {
-            return DAL.GetDecorationList();
+            return DAL.GetAllDecoration();
         }
 
         [HttpPost("check")]
@@ -50,6 +50,5 @@ namespace Dev.Build_Final.Controllers
 
 
     }
-        */
-}
+        
 }

@@ -35,7 +35,14 @@ namespace Dev.Build_Final.Services
 
         IEnumerable<gift> GetPersonGifts(int userID);
 
-        
+
+        IEnumerable<decoration> GetAllDecoration();
+        void AddDecoration(decoration newDecoration);
+        void RemoveDecoration(decoration destoryDecoration);
+        void CompleteDecoration(decoration myDec);
+
+
+
 
 
 
