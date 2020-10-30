@@ -16,6 +16,7 @@ import { PeopleComponent } from './people/people.component';
 import { DecorationsComponent } from './decorations/decorations.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PartyComponent,
     GiftsComponent,
     PeopleComponent,
-    DecorationsComponent
+    DecorationsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -39,10 +41,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'gift', component: GiftsComponent },
       { path: 'people', component: PeopleComponent },
-      { path: 'decoration', component: DecorationsComponent }
+      { path: 'decoration', component: DecorationsComponent },
+      { path: '**', component: PageNotFoundComponent}
     ]),
     BrowserAnimationsModule,
-    MatGridListModule
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
