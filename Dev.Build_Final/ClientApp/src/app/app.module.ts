@@ -14,6 +14,8 @@ import { PartyComponent } from './party/party.component';
 import { GiftsComponent } from './gifts/gifts.component';
 import { PeopleComponent } from './people/people.component';
 import { DecorationsComponent } from './decorations/decorations.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { DecorationsComponent } from './decorations/decorations.component';
       { path: 'gift', component: GiftsComponent },
       { path: 'people', component: PeopleComponent },
       { path: 'decoration', component: DecorationsComponent }
-    ])
+    ]),
+    BrowserAnimationsModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
